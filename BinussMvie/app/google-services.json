@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "193745882326",
+    "firebase_url": "https://myapp-a5090.firebaseio.com",
+    "project_id": "myapp-a5090",
+    "storage_bucket": "myapp-a5090.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193745882326:android:3a2998fb75f33785",
+        "android_client_info": {
+          "package_name": "com.example.tb_laota.volleydemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193745882326-14ru1o17d9nhrqissr61aovc42pon47n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tb_laota.volleydemo",
+            "certificate_hash": "f8915d4c78b3739b3d01317c15bb7d95138963ce"
+          }
+        },
+        {
+          "client_id": "193745882326-n9bbaihuihkveqeekuvugbk1jmj1a1ai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCA21rVXndGVAarwIDfgd7SYMD9BwDz5d0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193745882326-n9bbaihuihkveqeekuvugbk1jmj1a1ai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

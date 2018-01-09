@@ -1,8 +1,10 @@
 package com.example.tb_laota.Binusmovie;
 
 import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -10,6 +12,7 @@ import android.widget.ListView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private List<Item> array = new ArrayList<Item>();
     private ListView listView;
     private Adapter adapter;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +38,17 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list_item);
         adapter=new Adapter(this,array);
         listView.setAdapter(adapter);
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
+                if (firebaseAuth.getCurrentUser() == null){
+                    startActivity(new Intent(MainActivity.this, loginActivity.class));
+                }
+            }
+        };
+
+        mAuth = FirebaseAuth.getInstance();
         dialog=new ProgressDialog(this);
         dialog.setMessage("Loading...");
         dialog.show();
@@ -76,7 +91,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         AppController.getmInstance().addToRequesQueue(jsonArrayRequest);
+
+//        logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                mAuth.signOut();
+//            }
+//        });
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(authStateListener);
+    }
+
+
+
+
+
     public void hideDialog(){
         if(dialog !=null){
             dialog.dismiss();
@@ -95,13 +128,19 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+            //noinspection SimplifiableIfStatement
+            case R.id.action_settings:
+
+            break;
+
+            case R.id.btnLogout:
+                mAuth.signOut();
+                break;
         }
-
         return super.onOptionsItemSelected(item);
     }
+
+
 }
