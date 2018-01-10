@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -53,6 +54,7 @@ public class Adapter extends BaseAdapter{
             TextView rate= (TextView) convertView.findViewById(R.id.tv_rate);
             TextView genre= (TextView) convertView.findViewById(R.id.tv_genre);
             TextView year= (TextView) convertView.findViewById(R.id.tv_year);
+            Button btn= (Button) convertView.findViewById(R.id.btnn);
             //getting data for row
             Item item=items.get(position);
             imageView.setImageUrl(item.getImage(), imageLoader);
@@ -68,6 +70,12 @@ public class Adapter extends BaseAdapter{
             genre.setText(genreStr);
             //year
             year.setText(String.valueOf(item.getYear()));
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
 
         return convertView;
     }

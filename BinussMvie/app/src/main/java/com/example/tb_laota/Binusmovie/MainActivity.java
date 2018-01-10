@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +99,11 @@ public class MainActivity extends AppCompatActivity {
 //                mAuth.signOut();
 //            }
 //        });
+
+
     }
+
+
 
     @Override
     protected void onStart() {
@@ -137,6 +142,10 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.btnLogout:
                 mAuth.signOut();
+                break;
+
+            case R.id.btnProfile:
+                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

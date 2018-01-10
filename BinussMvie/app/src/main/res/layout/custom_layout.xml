@@ -41,6 +41,13 @@
         android:text="@string/test"
         android:textSize="13dp" />
     <!--year-->
+    <Button
+        android:id="@+id/btnn"
+        android:layout_below="@+id/tv_genre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:text="Buy movie"/>
     <TextView
         android:id="@+id/tv_year"
         android:layout_width="wrap_content"
@@ -51,4 +58,6 @@
         android:gravity="right"
         android:text="@string/test"
         android:textSize="12dp" />
+
+
 </RelativeLayout>
